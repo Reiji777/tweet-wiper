@@ -7,25 +7,19 @@ class TweetWiper {
     const { page } = this;
     const navigationPromise = page.waitForNavigation();
 
-    await page.goto("https://twitter.com/r_18/media");
+    await page.goto("https://twitter.com/r_18/media"); //Replace with your media url
 
     await page.setViewport({ width: 1536, height: 731 });
+    
+    //Login   
     await page.waitForSelector(
       "#signin-dropdown > .signin-dialog-body > .LoginForm > .LoginForm-username > .text-input"
     );
-    // await page.waitForSelector(
-    //   ".AppContainer > .AppContent-main > .Grid > .Grid-cell:nth-child(2) > .Grid"
-    // );
-    // await page.click(
-    //   ".AppContainer > .AppContent-main > .Grid > .Grid-cell:nth-child(2) > .Grid"
-    // );
 
     await page.waitForSelector(
       ".pull-right > #session > .dropdown > #signin-link > .emphasize"
     );
-    // await page.click(
-    //   ".pull-right > #session > .dropdown > #signin-link > .emphasize"
-    // );
+
     await page.waitFor(1000);
     await page.type(
       "#signin-dropdown > .signin-dialog-body > .LoginForm > .LoginForm-username > .text-input",
@@ -46,17 +40,15 @@ class TweetWiper {
     await navigationPromise;
 
     console.log("Wiping started....");
-
-    for (let i = 0; i <= 100; i++) {
+    
+    for (let i = 0; i <= 100; i++) { //FIXME: Every 115 attempts the function stops working
       await page.waitFor(1000);
-      // Page needs to be reloaded every 20 deletions, otherwise the page will no more display tweets.
       console.log(`Started: ${i}`)
-      if (i % 19 === 1) await page.reload();
+      if (i % 19 === 1) await page.reload(); // Page needs to be reloaded every 20 deletions, otherwise the page will no more display tweets.
       try {
         await this.wiper();
       } catch (e) {
         console.error(`${e}`)
-        //FIXME: Every 115 attempts the function stops working
         await page.reload();
         console.log("Page reloaded")
         await page.waitFor(2000);
