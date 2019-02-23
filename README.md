@@ -1,2 +1,2 @@
 # tweet-wiper
-Automatically wipe all the tweets
+Automatically wipe Media tweets via Puppeteer
