@@ -1,0 +1,23 @@
+{
+  "name": "tweet-wiper",
+  "version": "1.0.0",
+  "description": "Automatically wipe all the tweets",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Reiji777/tweet-wiper.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Reiji777/tweet-wiper/issues"
+  },
+  "homepage": "https://github.com/Reiji777/tweet-wiper#readme",
+  "dependencies": {
+    "puppeteer": "^1.12.2",
+  }
+}
